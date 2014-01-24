@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+	</ui:style>
+	<g:HTMLPanel>
+		<b:PageHeader>Continuous Deployment</b:PageHeader>
+		<b:Affix>
+			<b:ResponsiveNavbar position="TOP">
+				<b:Nav alignment="RIGHT">
+					<b:Button type="PRIMARY" ui:field="addRole">Add Role</b:Button>
+					<b:Button type="SUCCESS" ui:field="addUser">Add User</b:Button>
+				</b:Nav>
+			</b:ResponsiveNavbar>
+		</b:Affix>
+	</g:HTMLPanel>
+</ui:UiBinder> 

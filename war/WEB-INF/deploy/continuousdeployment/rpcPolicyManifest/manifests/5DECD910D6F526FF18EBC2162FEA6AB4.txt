@@ -1,0 +1,2 @@
+serviceClass: pelco.vxst.continuousdeployment.client.EnduraSoapService
+path: A105A66B140CA76A4258ADFBB998446A.gwt.rpc

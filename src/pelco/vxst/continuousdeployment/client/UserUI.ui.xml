@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+	</ui:style>
+	<g:HTMLPanel>
+		<b:Hero>
+			<b:Row ui:field="dupError"/>
+			<b:Heading size="2">Add Users by File</b:Heading>
+			<b:ResponsiveNavbar>
+				<b:Nav>
+					<b:NavText>User File:</b:NavText>
+				</b:Nav>
+				<b:Nav ui:field="formNav"/>
+			</b:ResponsiveNavbar>
+			<b:Row>
+				<b:Column size="5">
+					<b:CellTable ui:field="userCellTable"/>
+					<b:SimplePager ui:field="userPager" location="CENTER"/>
+				</b:Column>
+				<b:Column size="5">
+					<b:Form ui:field="userForm"/>
+				</b:Column>
+			</b:Row>
+		</b:Hero>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 
