@@ -18,6 +18,8 @@ public interface EnduraSoapService extends RemoteService {
 	ArrayList<User> userGetAll();
 	ArrayList<UserAttr> userAttrGetAll(String user);
 	ArrayList<Role> userGetRoles(Integer dbId);
-	String userCreate(String name, String pass, String userId);
+	String userCreate(String name, String pass, String userId, String roleDbId);
 	String userDelete(String dbId, String userId);
+	void setServerURL(String serverUrl);
+	String getServerURL();
 }

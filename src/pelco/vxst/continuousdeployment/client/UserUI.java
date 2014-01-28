@@ -123,8 +123,8 @@ public class UserUI extends Composite {
 		horFormPanel.add(fileSubmit);
 		fileForm.setWidget(horFormPanel);
 		
+		//Set Pager
 		userPager.setDisplay(userCellTable);
-		
 		ListDataProvider<User> dataProvider = new ListDataProvider<User>();
 		dataProvider.addDataDisplay(userCellTable);
 		userList = dataProvider.getList();
@@ -141,7 +141,6 @@ public class UserUI extends Composite {
 		
 		nameColumn.setSortable(true);
 		sortHandler.setComparator(nameColumn, new Comparator<User>() {
-			
 			@Override
 			public int compare(User user1, User user2) {
 				return user1.getName().compareTo(user2.getName());
@@ -200,7 +199,6 @@ public class UserUI extends Composite {
 					@Override
 					public void onFailure(Throwable caught) {
 						// TODO Auto-generated method stub
-						
 					}
 				});
 			}
@@ -222,6 +220,19 @@ public class UserUI extends Composite {
 		return false;
 	}
 	
+	public void setUrl(final String url) {
+		enduraSoapService.setServerURL(url, new AsyncCallback<Void>() {
+			@Override
+			public void onSuccess(Void result) {
+				System.out.println(url + " has Been succesfully set.");
+			}
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+			}
+		});
+	}
+	
 	public void loadUsers() {
 		enduraSoapService.userGetAll(new AsyncCallback<ArrayList<User>>() {
 			
@@ -239,10 +250,7 @@ public class UserUI extends Composite {
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
 			}
 		});
-		
-		
 	}
 }

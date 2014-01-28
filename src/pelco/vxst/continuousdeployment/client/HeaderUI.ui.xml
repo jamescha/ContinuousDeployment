@@ -8,8 +8,11 @@
 		<b:PageHeader>Continuous Deployment</b:PageHeader>
 		<b:Affix>
 			<b:ResponsiveNavbar position="TOP">
+				<b:Nav alignment="LEFT">
+					<b:NavForm ui:field="ipAddress" placeholder="IP Address" action="./"/>
+				</b:Nav>
 				<b:Nav alignment="RIGHT">
-					<b:Button type="PRIMARY" ui:field="addRole">Add Role</b:Button>
+					<!-- <b:Button type="PRIMARY" ui:field="addRole">Add Role</b:Button>  -->
 					<b:Button type="SUCCESS" ui:field="addUser">Add User</b:Button>
 				</b:Nav>
 			</b:ResponsiveNavbar>

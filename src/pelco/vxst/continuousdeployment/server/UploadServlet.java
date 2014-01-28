@@ -21,8 +21,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import pelco.vxst.continuousdeployment.client.UserUI;
-
 public class UploadServlet extends HttpServlet {
 
 	/**
@@ -83,7 +81,6 @@ public class UploadServlet extends HttpServlet {
 		JSONParser parser = new JSONParser();
 		final EnduraSoapServiceImpl enduraSoapService = new EnduraSoapServiceImpl();
 		
-		
 		try {
 			
 			FileReader fileReader = new FileReader(UPLOAD_DIRECTORY+fileName);
@@ -97,8 +94,9 @@ public class UploadServlet extends HttpServlet {
 				jsonObject = (JSONObject) object;
 				final String name = (String) jsonObject.get("name");
 				final String password = (String) jsonObject.get("password");
+				final String roleDbId = (String) jsonObject.get("roleDbId");
 				
-				enduraSoapService.userCreate(name, password, "366");
+				enduraSoapService.userCreate(name, password, "366", roleDbId);
 			}
 			
 			fileReader.close();
@@ -116,8 +114,5 @@ public class UploadServlet extends HttpServlet {
 		} else {
 			System.out.println("File was not Deleted!");
 		}
-		
 	}
-	
-	
 }

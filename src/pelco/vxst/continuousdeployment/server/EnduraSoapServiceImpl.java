@@ -34,9 +34,16 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class EnduraSoapServiceImpl extends RemoteServiceServlet 
 								   implements EnduraSoapService {
 	
-	final static String serverURL = "http://192.168.20.10:60001/control/UserAndRole-1";
-	
-	
+	String serverURL = new String();
+
+	public String getServerURL() {
+		return serverURL;
+	}
+
+	public void setServerURL(String serverURL) {
+		this.serverURL = "http://" + serverURL + ":60001/control/UserAndRole-1";
+	}
+
 	public ArrayList<Role> roleGetAll() {
 		try {
 			SOAPConnectionFactory factory = 
@@ -374,7 +381,7 @@ public class EnduraSoapServiceImpl extends RemoteServiceServlet
 		return roles;
 	}
 	
-	public String userCreate(String name, String pass, String userId) {
+	public String userCreate(String name, String pass, String userId, String roleDbId) {
 		try {
 			SOAPConnectionFactory factory = 
 					SOAPConnectionFactory.newInstance();
@@ -382,7 +389,7 @@ public class EnduraSoapServiceImpl extends RemoteServiceServlet
 			SOAPConnection connection =
 		            factory.createConnection(); 
 			 
-			SOAPMessage response = connection.call(soapUserCreate(name, pass, userId), serverURL);
+			SOAPMessage response = connection.call(soapUserCreate(name, pass, userId, roleDbId), serverURL);
 		      
 			connection.close();
 			 
@@ -395,7 +402,7 @@ public class EnduraSoapServiceImpl extends RemoteServiceServlet
 		return null;
 	}
 	
-	private static SOAPMessage soapUserCreate(String name, String pass, String userId) throws Exception {
+	private static SOAPMessage soapUserCreate(String name, String pass, String userId, String roleDbId) throws Exception {
 		//Create a SOAPMessage
 		MessageFactory messageFactory = MessageFactory.newInstance();
 		SOAPMessage message = messageFactory.createMessage();
@@ -441,7 +448,7 @@ public class EnduraSoapServiceImpl extends RemoteServiceServlet
 		
 		QName roleDbIdQName = new QName("roleDbId");
 		SOAPElement roleDbIdChildEle = soapBodyElem.addChildElement(roleDbIdQName);
-		roleDbIdChildEle.setValue("1");
+		roleDbIdChildEle.setValue(roleDbId);
 		
 		QName pageReqQName = new QName("pageReq");
 		   
@@ -537,6 +544,4 @@ public class EnduraSoapServiceImpl extends RemoteServiceServlet
 		   
 		return message;
 	}
-	
-	
 }
